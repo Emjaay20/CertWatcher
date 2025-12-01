@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: cert-watcher-backend
+    env: docker
+    region: ohio
+    plan: free
+    dockerContext: ./server
+    dockerfilePath: ./server/Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 3001
