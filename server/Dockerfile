@@ -3,8 +3,8 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN ls -la
+COPY . .
+RUN ls -R
 RUN npm install
 
 COPY . .
