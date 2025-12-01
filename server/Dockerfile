@@ -3,11 +3,10 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-COPY . .
-RUN ls -R
+COPY server/package*.json ./
 RUN npm install
 
-COPY . .
+COPY server/ .
 RUN npm run build
 
 # Production Stage
@@ -15,8 +14,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN ls -la
+COPY server/package*.json ./
 RUN npm install --only=production
 
 COPY --from=builder /app/dist ./dist
