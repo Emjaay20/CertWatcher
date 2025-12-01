@@ -4,8 +4,8 @@ services:
     env: docker
     region: ohio
     plan: free
-    dockerContext: ./server
-    dockerfilePath: ./server/Dockerfile
+    dockerContext: server
+    dockerfilePath: server/Dockerfile
     healthCheckPath: /
     envVars:
       - key: PORT
