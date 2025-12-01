@@ -29,7 +29,8 @@ export const Dashboard = () => {
         const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
         try {
-            const response = await axios.get(`http://localhost:3001/api/analyze?domain=${cleanDomain}`);
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+            const response = await axios.get(`${apiUrl}/api/analyze?domain=${cleanDomain}`);
             setData(response.data);
         } catch (err) {
             if (axios.isAxiosError(err)) {
